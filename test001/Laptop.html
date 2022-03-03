@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=no">
+    <title>ModerlViewer test001 laptop</title>
+
+	<style>
+		.br::before {
+			content: "\A" ;
+			white-space: pre ;
+		}
+	</style>
+
+<link rel="stylesheet" href="./style.css">
+<script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+
+  </head>
+  <body>
+
+<style>
+  #lazy-load-poster {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background-image: url(../assets/poster-damagedhelmet.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  #ar-button {
+    background-image: url(assets/box.png);
+    background-repeat: no-repeat;
+    background-size: 33px 40px;
+    background-position: 12px 50%;
+    background-color: #fff;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 40px;
+    padding: 0px 16px 0px 60px;
+    font-family: Roboto Regular, Helvetica Neue, sans-serif;
+    font-size: 40px;
+    color:#4285f4;
+    height: 144px;
+    line-height: 36px;
+    border-radius: 18px;
+    border: 1px solid #DADCE0;
+  }
+
+
+
+</style>
+
+<div align="center">
+
+    <!-- <model-viewer  
+
+    id="reveal" loading="eager" poster="poster/poster-saru.jpg"
+
+    ar
+    alt="FJDL50"
+    src="model/FJDL50.glb" 
+    
+    ios-src="model/FJDL50.usdz" 
+
+    ar-scale = "auto"
+    
+    style="width:900px;height:900px;"                  
+
+    background-color="#70BCD1"
+    shadow-intensity="0.7"
+    camera-controls
+    environment-image="assets/lebombo_1k.hdr"
+    autoplay
+    interaction-prompt="auto"
+    auto-rotate ar magic-leap> -->
+
+
+  <!-- <button slot="ar-button" id="ar-button">
+    F-JDL50
+  </button>
+    
+
+    </model-viewer> -->
+
+    <model-viewer
+
+    id="reveal" loading="eager"
+  src="model/Laptop.glb"
+ 
+  ar ar-modes="scene-viewer webxr quick-look" 
+
+  ios-src="model/Laptop.usdz"
+
+ style="width:300px;height:300px;"  
+
+
+
+  camera-controls
+  auto-rotate
+></model-viewer>
+
+
+<br>
+</div>
+
+
+  </body>
+</html>
+
+
+
