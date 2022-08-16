@@ -1,0 +1,9 @@
+◆httpsでないとHMD時のVRモードが正しく動作しない
+
+短縮URL
+
+
+■GitHub
+https://sonomuta.github.io/Test/aflameTest/03/index.html
+
+
