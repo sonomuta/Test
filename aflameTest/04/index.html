@@ -8,6 +8,23 @@
 　　<body>
 　　　<a-scene>
 
+
+            <a-box position="-4.12 0.5 -1.5" rotation="0 45 0" color="#4CC3D9">
+                <a-animation
+                    attribute="color"
+                    from="#4CC3D9"
+                    to="#FFA321"
+                    dur="2000"
+                    direction="alternate"
+                    repeat="1"
+                    fill="forwards"
+                    begin="click"
+                >
+                </a-animation>
+                
+            </a-box>
+
+
             <a-torus color="#43A367" arc="360" radius="1" radius-tubular="0.1" position="0 2 -4">
                 <a-animation
                     attribute="rotation"
@@ -22,6 +39,34 @@
                 </a-animation>
                 
             </a-torus>
+
+            <a-cylinder position="6.5 0.75 -0.44" radius="0.5" height="1.5" color="#FFC65D">
+                <a-animation
+                    attribute="position"
+                    from="6.5 0.75 -0.44"
+                    to="2 -0.75 -6"
+                    dur="2000"
+                    direction="alternate"
+                    repeat="1"
+                    fill="forwards"
+                    begin="click"
+                >
+                </a-animation>
+            </a-cylinder>
+
+            <a-cylinder position="-2 0.95 -6" radius="0.5" height="1.5" color="#DD0044">
+                <a-animation
+                    attribute="scale"
+                    from="1 0.75 -3"
+                    to="2 0.75 -6"
+                    dur="2000"
+                    direction="alternate"
+                    repeat="1"
+                    fill="forwards"
+                    begin="click"
+                >
+                </a-animation>
+            </a-cylinder>
 
 
    　    <a-sky src="puydesancy.jpg" rotation="0 0 0"></a-sky>
