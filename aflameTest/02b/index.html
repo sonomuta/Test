@@ -1,9 +1,23 @@
 <html>
     <head>
         <script src="https://aframe.io/releases/0.5.0/aframe.min.js"></script>
+
+<!-- 別のURLへの遷移処理の読み込み-->
+  <script src="tour.js"></script> 
+
     </head>
     <body>
         <a-scene>
+
+<!-- ボタン画像素材をキャッシュに保存-->
+<a-assets>
+    <img id="thumb001"  src="/image/return.png">
+</a-assets>
+
+   
+    <a-image width="2" height="2" rotation="-90 0 0" position="0 0 -0.142" src="#thumb001" same_window="link: https://sonomuta.github.io/Test/aflameTest/01/index.html"></a-image>
+
+
             <a-box position="-1 0.5 -3" rotation="0 45 0" color="#4CC3D9">
                 <a-animation
                     attribute="color"

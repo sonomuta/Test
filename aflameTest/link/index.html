@@ -1,0 +1,69 @@
+<html>
+  <head>
+    <script src="https://aframe.io/releases/0.8.2/aframe.min.js"></script>
+
+  <script src="background-gradient.js"></script>
+
+<!-- 別のURLへの遷移処理の読み込み-->
+  <script src="tour.js"></script> 
+
+  </head>
+  <body>
+    <a-scene>
+
+<!-- 主要オブジェクトの配置-->
+      <a-sphere position="0 1 -5" color="red"></a-sphere>
+      <a-plane position="0 0 -4" rotation="-90 0 0" width="6" height="6" color="gray"></a-plane>
+
+
+<!-- ボタン画像素材をキャッシュに保存-->
+<a-assets>
+    <img id="thumb001"  src="/image/button01.png">
+    <img id="thumb002" crossOrigin="anonymous" src="/image/button02.png">
+    <img id="thumb003" crossOrigin="anonymous" src="/image/button03.png">
+</a-assets>
+
+
+<a-text value="Jamp01" position="-0.8 1.3 -10" width="10" height="10"></a-text>    
+    <a-image width="2" height="2" rotation="0 0 0" position="0 0 -10" src="#thumb001" same_window="link: https://sonomuta.github.io/Test/aflameTest/02b/index.html"></a-image>
+
+<a-text value="Jamp02" position="3.2 1.3 -10" width="10" height="10"></a-text>    
+    <a-image width="2" height="2" rotation="4 0 0" position="4 0 -10" src="#thumb002" same_window="link: https://sonomuta.github.io/Test/aflameTest/03/index.html"></a-image>
+
+<a-text value="Jamp03" position="-4.8 1.3 -10" width="10" height="10"></a-text>    
+    <a-image width="2" height="2" rotation="4 0 0" position="-4 0 -10" src="#thumb003" same_window="link: https://www.google.co.jp/maps?hl=ja"></a-image>
+
+<!-- ボタン画像にリンク先の設定 ※a-likタグは今の最新バージョンにバグがあって今回は未使用-->
+<!--
+<a-entity link="https://sonomuta.github.io/Test/aflameTest/01/index.htm; title: My Homepage 002; image: #thumb001" position="0 1.2 -4"></a-entity>
+
+
+<a-link href="https://sonomuta.github.io/Test/aflameTest/02b/index.html" title="link 001" image="#thumb001" position="0 1.2 -4"></a-link>
+<a-link href="https://sonomuta.github.io/Test/aflameTest/02/index.html" title="link 002" image="#thumb002" position="-4 1.2 -4"></a-link>
+<a-link href="https://sonomuta.github.io/Test/aflameTest/04/index.html" title="link 003" image="#thumb003" position="4 1.2 -4"></a-link>
+ -->   
+
+<!--
+      <a-box position="-1 1 -3" width="1" height="2" color="red"></a-box>
+      <a-cone position="1 1 -3" height="2" color="yellow"></a-cone>
+
+ -->
+
+
+ <a-entity camera look-controls wasd-controls position="0 1 0">
+        <a-entity cursor="fuse: true;"
+            position="0 0 -1"
+            geometry="primitive: ring; radiusInner: 0.02; radiusOuter: 0.03"
+            material="color: blue; shader: flat">
+            <a-animation begin="click" easing="ease-in" attribute="scale" dur="150"
+               fill="forwards" from="0.1 0.1 0.1" to="1 1 1"></a-animation>
+            <a-animation begin="cursor-fusing" easing="ease-in" attribute="scale" dur="1500"
+               fill="backwards" from="1 1 1" to="0.1 0.1 0.1"></a-animation>
+        </a-entity>
+      </a-entity>
+
+     <a-sky color="skyblue"></a-sky>
+
+    </a-scene>
+  </body>
+</html>
