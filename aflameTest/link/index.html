@@ -1,69 +1,62 @@
+<!DOCTYPE html>
 <html>
   <head>
-    <script src="https://aframe.io/releases/0.8.2/aframe.min.js"></script>
-
-  <script src="background-gradient.js"></script>
-
-<!-- 別のURLへの遷移処理の読み込み-->
-  <script src="tour.js"></script> 
-
+    <meta charset="utf-8">
+    <title>360&deg; Image Gallery</title>
+    <meta name="description" content="360&deg; Image Gallery - A-Frame">
+    <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-event-set-component@5/dist/aframe-event-set-component.min.js"></script>
+    <script src="https://unpkg.com/aframe-layout-component@5.3.0/dist/aframe-layout-component.min.js"></script>
+    <script src="https://unpkg.com/aframe-template-component@3.2.1/dist/aframe-template-component.min.js"></script>
+    <script src="https://unpkg.com/aframe-proxy-event-component@2.1.0/dist/aframe-proxy-event-component.min.js"></script>
+    
+    <!-- Image link template to be reused. -->
+    <script id="link" type="text/html">
+      <a-entity class="link"
+        geometry="primitive: plane; height: 1; width: 1"
+        material="shader: flat; src: ${thumb}"
+        event-set__mouseenter="scale: 1.2 1.2 1"
+        event-set__mouseleave="scale: 1 1 1"
+        event-set__click="_target: #image-360; _delay: 300; material.src: ${src}"
+        proxy-event="event: click; to: #image-360; as: fade"
+        sound="on: click; src: #click-sound"></a-entity>
+    </script>
   </head>
   <body>
     <a-scene>
+      <a-assets>
+        <img id="city" crossorigin="anonymous" src="https://cdn.aframe.io/360-image-gallery-boilerplate/img/city.jpg">
+        <img id="city-thumb" crossorigin="anonymous" src="https://cdn.aframe.io/360-image-gallery-boilerplate/img/thumb-city.jpg">
+        <img id="cubes-thumb" crossorigin="anonymous" src="https://cdn.aframe.io/360-image-gallery-boilerplate/img/thumb-cubes.jpg">
+        <img id="sechelt-thumb" crossorigin="anonymous" src="https://cdn.aframe.io/360-image-gallery-boilerplate/img/thumb-sechelt.jpg">
+        <audio id="click-sound" crossorigin="anonymous" src="https://cdn.aframe.io/360-image-gallery-boilerplate/audio/click.ogg"></audio>
+        <img id="cubes" crossorigin="anonymous" src="https://cdn.aframe.io/360-image-gallery-boilerplate/img/cubes.jpg">
+        <img id="sechelt" crossorigin="anonymous" src="https://cdn.aframe.io/360-image-gallery-boilerplate/img/sechelt.jpg">
 
-<!-- 主要オブジェクトの配置-->
-      <a-sphere position="0 1 -5" color="red"></a-sphere>
-      <a-plane position="0 0 -4" rotation="-90 0 0" width="6" height="6" color="gray"></a-plane>
+      </a-assets>
 
+      <!-- 360-degree image. -->
+      <a-sky id="image-360" radius="10" src="#city"
+             animation__fade="property: components.material.material.color; type: color; from: #FFF; to: #000; dur: 300; startEvents: fade"
+             animation__fadeback="property: components.material.material.color; type: color; from: #000; to: #FFF; dur: 300; startEvents: animationcomplete__fade"></a-sky>
 
-<!-- ボタン画像素材をキャッシュに保存-->
-<a-assets>
-    <img id="thumb001"  src="/image/button01.png">
-    <img id="thumb002" crossOrigin="anonymous" src="/image/button02.png">
-    <img id="thumb003" crossOrigin="anonymous" src="/image/button03.png">
-</a-assets>
-
-
-<a-text value="Jamp01" position="-0.8 1.3 -10" width="10" height="10"></a-text>    
-    <a-image width="2" height="2" rotation="0 0 0" position="0 0 -10" src="#thumb001" same_window="link: https://sonomuta.github.io/Test/aflameTest/02b/index.html"></a-image>
-
-<a-text value="Jamp02" position="3.2 1.3 -10" width="10" height="10"></a-text>    
-    <a-image width="2" height="2" rotation="4 0 0" position="4 0 -10" src="#thumb002" same_window="link: https://sonomuta.github.io/Test/aflameTest/03/index.html"></a-image>
-
-<a-text value="Jamp03" position="-4.8 1.3 -10" width="10" height="10"></a-text>    
-    <a-image width="2" height="2" rotation="4 0 0" position="-4 0 -10" src="#thumb003" same_window="link: https://www.google.co.jp/maps?hl=ja"></a-image>
-
-<!-- ボタン画像にリンク先の設定 ※a-likタグは今の最新バージョンにバグがあって今回は未使用-->
-<!--
-<a-entity link="https://sonomuta.github.io/Test/aflameTest/01/index.htm; title: My Homepage 002; image: #thumb001" position="0 1.2 -4"></a-entity>
-
-
-<a-link href="https://sonomuta.github.io/Test/aflameTest/02b/index.html" title="link 001" image="#thumb001" position="0 1.2 -4"></a-link>
-<a-link href="https://sonomuta.github.io/Test/aflameTest/02/index.html" title="link 002" image="#thumb002" position="-4 1.2 -4"></a-link>
-<a-link href="https://sonomuta.github.io/Test/aflameTest/04/index.html" title="link 003" image="#thumb003" position="4 1.2 -4"></a-link>
- -->   
-
-<!--
-      <a-box position="-1 1 -3" width="1" height="2" color="red"></a-box>
-      <a-cone position="1 1 -3" height="2" color="yellow"></a-cone>
-
- -->
-
-
- <a-entity camera look-controls wasd-controls position="0 1 0">
-        <a-entity cursor="fuse: true;"
-            position="0 0 -1"
-            geometry="primitive: ring; radiusInner: 0.02; radiusOuter: 0.03"
-            material="color: blue; shader: flat">
-            <a-animation begin="click" easing="ease-in" attribute="scale" dur="150"
-               fill="forwards" from="0.1 0.1 0.1" to="1 1 1"></a-animation>
-            <a-animation begin="cursor-fusing" easing="ease-in" attribute="scale" dur="1500"
-               fill="backwards" from="1 1 1" to="0.1 0.1 0.1"></a-animation>
-        </a-entity>
+      <!-- Image links. -->
+      <a-entity id="links" layout="type: line; margin: 1.5" position="0 -1 -4">
+        <a-entity template="src: #link" data-src="#cubes" data-thumb="#cubes-thumb"></a-entity>
+        <a-entity template="src: #link" data-src="#city" data-thumb="#city-thumb"></a-entity>
+        <a-entity template="src: #link" data-src="#sechelt" data-thumb="#sechelt-thumb"></a-entity>
       </a-entity>
 
-     <a-sky color="skyblue"></a-sky>
-
+      <!-- Camera + cursor. -->
+      <a-entity camera look-controls>
+        <a-cursor
+          id="cursor"
+          animation__click="property: scale; startEvents: click; from: 0.1 0.1 0.1; to: 1 1 1; dur: 150"
+          animation__fusing="property: fusing; startEvents: fusing; from: 1 1 1; to: 0.1 0.1 0.1; dur: 1500"
+          event-set__mouseenter="_event: mouseenter; color: springgreen"
+          event-set__mouseleave="_event: mouseleave; color: black"
+          raycaster="objects: .link"></a-cursor>
+      </a-entity>
     </a-scene>
   </body>
 </html>
